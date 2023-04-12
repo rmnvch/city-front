@@ -1,0 +1,10 @@
+<form #form="ngForm" class="search-form" >
+  <mat-form-field appearance="outline">
+    <mat-label>Type here</mat-label>
+    <input [(ngModel)]="value" matInput name="search">
+    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''; handleClick()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <button (click)="handleClick()" mat-raised-button color="primary">Search</button>
+</form>

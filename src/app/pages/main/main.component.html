@@ -1,0 +1,25 @@
+<app-layout>
+  <app-header (searchClick)="onSearchClick($event)"></app-header>
+  <h1>City list</h1>
+  <app-cards-list>
+
+    <app-card 
+      *ngFor="let city of cityList"
+      [title]="city.name"
+      [id]="city.id"
+      [image]="city.photo"
+    ></app-card>
+
+  </app-cards-list>
+
+  <!-- <mat-paginator #paginator
+               class="demo-paginator"
+               (page)="handlePageEvent($event)"
+               aria-label="Select page"
+               [length]="pageInfo.totalElements || 0"
+               [pageSize]="pageInfo.pageSize || 0"
+               [pageIndex]="pageInfo.pageNumber || 0"
+  >
+</mat-paginator> -->
+
+</app-layout>

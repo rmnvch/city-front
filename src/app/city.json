@@ -1,0 +1,47 @@
+[
+  {
+      "id": 1,
+      "name": "Tokyo",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Skyscrapers_of_Shinjuku_2009_January.jpg/500px-Skyscrapers_of_Shinjuku_2009_January.jpg"
+  },
+  {
+      "id": 2,
+      "name": "newCityName",
+      "photo": "http://www.photo.com"
+  },
+  {
+      "id": 3,
+      "name": "Delhi",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/IN-DL.svg/439px-IN-DL.svg.png"
+  },
+  {
+      "id": 4,
+      "name": "Mumbai",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Mumbai_Skyline_at_Night.jpg/500px-Mumbai_Skyline_at_Night.jpg"
+  },
+  {
+      "id": 5,
+      "name": "Manila",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Manila_Cathedral_Facade_at_Sunset.jpg/500px-Manila_Cathedral_Facade_at_Sunset.jpg"
+  },
+  {
+      "id": 6,
+      "name": "Shanghai",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Pudong_Shanghai_November_2017_panorama.jpg/500px-Pudong_Shanghai_November_2017_panorama.jpg"
+  },
+  {
+      "id": 7,
+      "name": "São Paulo",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/S%C3%A3o_Paulo_GTXDrone_Capture_134.255.jpg/500px-S%C3%A3o_Paulo_GTXDrone_Capture_134.255.jpg"
+  },
+  {
+      "id": 8,
+      "name": "Seoul",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/%EB%8D%95%EC%88%98%EA%B6%81_2011%EB%85%84_11%EC%9B%94_%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD_%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C_%EB%AA%85%EC%86%8C_%28Seoul_best_attractions%29_%EC%82%AC%EB%B3%B8_-1S6O1452.jpg/500px-%EB%8D%95%EC%88%98%EA%B6%81_2011%EB%85%84_11%EC%9B%94_%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD_%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C_%EB%AA%85%EC%86%8C_%28Seoul_best_attractions%29_%EC%82%AC%EB%B3%B8_-1S6O1452.jpg"
+  },
+  {
+      "id": 9,
+      "name": "Mexico City",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Montaje.Ciudad_de_M%C3%A9xico.jpg/250px-Montaje.Ciudad_de_M%C3%A9xico.jpg"
+  }
+]

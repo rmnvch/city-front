@@ -1,0 +1,22 @@
+<app-dialog
+  [isOpen]="true"
+>
+  <h1>
+    Please Sign In
+  </h1>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Login</mat-label>
+      <input formControlName="login" matInput>
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input formControlName="password" type="password" matInput>
+    </mat-form-field>
+
+    <button [disabled]="!form.valid" mat-raised-button color="primary">LogIn</button>
+  </form
+
+></app-dialog>
