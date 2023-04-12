@@ -64,7 +64,6 @@ export class MainComponent implements OnInit, OnDestroy {
     .pipe(
       tap(() => {
         this.isLoading = true;
-        this.cityList = []
       }),
       map((param) => {
         return {

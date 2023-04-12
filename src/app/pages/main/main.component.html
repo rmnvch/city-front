@@ -19,7 +19,7 @@
     </mat-paginator>
   </div>
   <app-cards-list>
-
+    <p *ngIf="!cityList.length">No results....</p>
     <app-card 
       *ngFor="let city of cityList"
       [city]="city"
