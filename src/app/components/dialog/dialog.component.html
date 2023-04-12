@@ -1,5 +1,5 @@
-<div *ngIf="isOpen" class='wrapper'>
-  <div class="content">
+<div *ngIf="isOpen" class='wrapper' [class.loader]="isLoader">
+  <div class="content" [class.transparent]="isContentTransparent">
     <ng-content></ng-content>
   </div>
 </div>

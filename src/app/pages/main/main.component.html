@@ -1,25 +1,57 @@
 <app-layout>
+
+  <app-dialog [isContentTransparent]="true" [isLoader]="true" class="spinner" [isOpen]="true" *ngIf="isLoading">
+    <mat-spinner></mat-spinner>
+  </app-dialog>
+
   <app-header (searchClick)="onSearchClick($event)"></app-header>
-  <h1>City list</h1>
+  <div class="pagination">
+    <h1>City list #{{pageInfo.pageNumber + 1}}</h1>
+
+    <mat-paginator #paginator
+               class="demo-paginator"
+               (page)="handlePageEvent($event)"
+               aria-label="Select page"
+               [length]="pageInfo.totalElements"
+               [pageSize]="pageInfo.pageSize"
+               [pageIndex]="pageInfo.pageNumber"
+    >
+    </mat-paginator>
+  </div>
   <app-cards-list>
 
     <app-card 
       *ngFor="let city of cityList"
-      [title]="city.name"
-      [id]="city.id"
-      [image]="city.photo"
+      [city]="city"
+      (editButtonClick)="handleEditClick($event)"
     ></app-card>
 
   </app-cards-list>
 
-  <!-- <mat-paginator #paginator
-               class="demo-paginator"
-               (page)="handlePageEvent($event)"
-               aria-label="Select page"
-               [length]="pageInfo.totalElements || 0"
-               [pageSize]="pageInfo.pageSize || 0"
-               [pageIndex]="pageInfo.pageNumber || 0"
-  >
-</mat-paginator> -->
+  <app-dialog class="edit-modal" *ngIf="cityToEdit" [isOpen]="isEditModalOpen">
+    <div>
+      <h2>Edit City Card</h2>
+      <span> id: {{cityToEdit.id}}</span>
+    </div>
+    
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input formControlName="name" matInput>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Photo</mat-label>
+        <input formControlName="photo" matInput>
+      </mat-form-field>
+
+      <div>
+        <button (click)="isEditModalOpen = false" mat-stroked-button color="warn">Cancel</button>
+        <button [disabled]="(editForm.pristine || !editForm.valid)" mat-flat-button color="primary">Edit</button>
+      </div>
+    </form>
+
+  </app-dialog>
 
 </app-layout>

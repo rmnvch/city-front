@@ -1,4 +1,5 @@
 .wrapper {
+  z-index: 11;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -8,9 +9,18 @@
   align-items: center;
   justify-content: center;
   background-color: rgba(219, 217, 217, 0.5);
+  overflow: hidden;
 
   .content{ 
     background-color: #fff;
     padding: 80px;
   }
+
+  .content.transparent {
+    background-color: transparent;
+  }
+}
+
+.wrapper.loader {
+  z-index: 20;
 }

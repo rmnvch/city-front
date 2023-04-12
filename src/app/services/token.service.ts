@@ -6,11 +6,12 @@ import { ILogInFormValue } from "../pages/login/login.component";
 })
 
 export class TokenService {
-  public isLoggedIn = false;
+  public isLoggedIn = !!localStorage.getItem('tokenCity') || false ;
 
   setToken(value: ILogInFormValue) {
-    const token = btoa(`${value.login?.toLowerCase()}:${value.password?.toLowerCase()}`)
-    localStorage.setItem('token', JSON.stringify(token));
+    const token = btoa(`${value.login?.toLowerCase().trim()}:${value.password?.toLowerCase().trim()}`)
+    localStorage.setItem('tokenCity', token);
+    console.log(token);
     this.isLoggedIn = true;
   }
 

@@ -1,0 +1,26 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.edit-modal {
+  form {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    & > div {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}
+
+.spinner{
+  z-index: 20;
+}

@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ICity } from 'src/app/pages/main/main.component';
 
 @Component({
   selector: 'app-card',
@@ -7,8 +8,15 @@ import { Component, Input } from '@angular/core';
 })
 export class CardComponent {
 
-  @Input() title!: string;
-  @Input() id!: number;
-  @Input() image!: string;
+  @Input() city!: ICity;
+  @Output() editButtonClick = new EventEmitter<ICity>();
 
+  handleClick(): void {
+    this.editButtonClick.emit(this.city);
+  }
+
+  handleMissingImage(event: Event) {
+    const target = event.target as HTMLImageElement;
+    target.src = '/assets/no-image.png'
+  }
 }

@@ -13,6 +13,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LayoutComponent } from './components/layout/layout.component';
@@ -43,6 +44,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     MatButtonModule,
     MatIconModule,
     MatCardModule,
+    MatProgressSpinnerModule,
     MatPaginatorModule,
     FormsModule,
     HttpClientModule,

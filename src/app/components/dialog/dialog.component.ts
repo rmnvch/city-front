@@ -8,6 +8,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class DialogComponent {
   @Input() isOpen!: boolean;
+  @Input() isContentTransparent = false;
+  @Input() isLoader = false;
 
   constructor() {}
 

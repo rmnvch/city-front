@@ -12,12 +12,11 @@ export class TokenInterceptor implements HttpInterceptor {
   constructor(private tokenService: TokenService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token = JSON.stringify(localStorage.getItem('token'));
+    const token = localStorage.getItem('tokenCity');
     if (token) {
       request = request.clone({
         setHeaders: { 
           Authorization: `Basic ${token}`,
-          'Access-Control-Allow-Origin': '*'
         },
         
       });
@@ -27,7 +26,7 @@ export class TokenInterceptor implements HttpInterceptor {
       .pipe(
         catchError((err: unknown) => {
           if (err instanceof HttpErrorResponse && err.status === 401) {
-            this.tokenService.setInvalid();
+            // this.tokenService.setInvalid();
           }
           return throwError(() => new Error());
         })
