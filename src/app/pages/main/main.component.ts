@@ -1,37 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import data from '../../city.json';
 import { ActivatedRoute, Route, Router } from '@angular/router';
-import { Subscription, concatMap, map, tap } from 'rxjs';
-import { ApiService } from 'src/app/services/api.service';
+import { Subscription, concatMap, finalize, map, tap } from 'rxjs';
+import { CityService } from 'src/app/services/city.service';
 import { FormBuilder, Validators } from '@angular/forms';
-
-const mockData: ICitiesResponce = {
-  content: [...data],
-  pageable: {
-    pageNumber: 0,
-    pageSize: 0,
-    totalElements: 9,
-    totalPages: 1,
-  }
-}
-
-export interface ICity {
-  "id": number;
-  "name": string;
-  "photo": string;
-} 
-
-export interface IPageInfo {
-  "pageNumber": number;
-  "pageSize": number;
-  "totalElements": number;
-  "totalPages": number;
-}
-
-export interface ICitiesResponce{
-  "content": ICity[];
-  "pageable": IPageInfo;
-}
+import { PageEvent } from '@angular/material/paginator';
+import { City } from 'src/app/interfaces/city.interface';
 
 @Component({
   selector: 'app-main',
@@ -42,8 +15,8 @@ export class MainComponent implements OnInit, OnDestroy {
 
   public isLoading = false;
   public isEditModalOpen = false;
-  public cityToEdit!: ICity; 
-  public cityList!: ICity[];
+  public cityToEdit!: City; 
+  public cityList: City[] = [];
   public pageInfo = {
     "pageNumber": 0,
     "pageSize": 0,
@@ -57,7 +30,12 @@ export class MainComponent implements OnInit, OnDestroy {
     photo: ['', Validators.required],
   })
 
-  constructor(private route: ActivatedRoute, private router: Router, private apiService: ApiService, private fb: FormBuilder) {}
+  constructor(
+    private route: ActivatedRoute, 
+    private router: Router, 
+    private cityService: CityService, 
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.querySubscription = this.route.queryParamMap
@@ -75,7 +53,7 @@ export class MainComponent implements OnInit, OnDestroy {
       tap(({ page, search, size}) => {
         this.router.navigate([], { queryParams: { page, search, size } });
       }),
-      concatMap(params => this.apiService.getCities(params)),
+      concatMap(params => this.cityService.getCities(params)),
     )
     .subscribe({
       next: (data) => {
@@ -84,6 +62,7 @@ export class MainComponent implements OnInit, OnDestroy {
         this.pageInfo = data.pageable;
       }, 
       error: () => {
+        this.isLoading = false;
       }
     });
   }
@@ -96,11 +75,11 @@ export class MainComponent implements OnInit, OnDestroy {
     this.router.navigate([], { queryParams: {'search': searchString}});
   }
 
-  handlePageEvent(data: any): void {
+  handlePageEvent(data: PageEvent): void {
     this.router.navigate([], { queryParams: {'page': data.pageIndex}, queryParamsHandling: 'merge'});
   }
 
-  handleEditClick(card: ICity): void {
+  handleEditClick(card: City): void {
     this.cityToEdit = card;
     this.isEditModalOpen = true;
     this.editForm.setValue({name: card.name, photo: card.photo});
@@ -117,7 +96,7 @@ export class MainComponent implements OnInit, OnDestroy {
 
     this.isLoading = true;
 
-    this.apiService.editCity(cityToUpdate)
+    this.cityService.editCity(cityToUpdate)
       .subscribe((data) => {
         this.isLoading = false;
         this.isEditModalOpen = false;

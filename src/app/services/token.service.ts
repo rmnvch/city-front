@@ -11,7 +11,6 @@ export class TokenService {
   setToken(value: ILogInFormValue) {
     const token = btoa(`${value.login?.toLowerCase().trim()}:${value.password?.toLowerCase().trim()}`)
     localStorage.setItem('tokenCity', token);
-    console.log(token);
     this.isLoggedIn = true;
   }
 

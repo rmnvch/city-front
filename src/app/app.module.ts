@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainComponent } from './pages/main/main.component';
 import { HeaderComponent } from './components/header/header.component';
-import { ErrorPageComponent } from './pages/error-page/error-page.component';
 
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
@@ -23,13 +22,13 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { LoginComponent } from './pages/login/login.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { ApiInterceptor } from './interceptors/api.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     HeaderComponent,
-    ErrorPageComponent,
     LayoutComponent,
     CardComponent,
     CardsListComponent,
@@ -51,7 +50,8 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     ReactiveFormsModule,
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true},
   ],
   bootstrap: [AppComponent]
 })

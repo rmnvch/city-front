@@ -26,7 +26,7 @@ export class TokenInterceptor implements HttpInterceptor {
       .pipe(
         catchError((err: unknown) => {
           if (err instanceof HttpErrorResponse && err.status === 401) {
-            // this.tokenService.setInvalid();
+            this.tokenService.setInvalid();
           }
           return throwError(() => new Error());
         })

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ICity } from 'src/app/pages/main/main.component';
+import { City } from 'src/app/interfaces/city.interface';
 
 @Component({
   selector: 'app-card',
@@ -8,8 +8,8 @@ import { ICity } from 'src/app/pages/main/main.component';
 })
 export class CardComponent {
 
-  @Input() city!: ICity;
-  @Output() editButtonClick = new EventEmitter<ICity>();
+  @Input() city!: City;
+  @Output() editButtonClick = new EventEmitter<City>();
 
   handleClick(): void {
     this.editButtonClick.emit(this.city);

@@ -1,7 +1,6 @@
 <mat-card class="card">
   <mat-card-header>
     <mat-card-title>{{city.name}}</mat-card-title>
-    <!-- <mat-card-subtitle>id: {{id}}</mat-card-subtitle> -->
   </mat-card-header>
   <img class="card__img" (error)="handleMissingImage($event)" mat-card-image [src]="city.photo" alt="Photo of {{city.name}}">
   <mat-card-actions>
